@@ -38,7 +38,9 @@ monorepo/
 
 | Login | Employee Dashboard | Shift Schedule |
 |---|---|---|
-<img width="1005" height="2048" alt="karsılama-ekranı" src="https://github.com/user-attachments/assets/0b435bff-2207-45d2-8b44-a0bae6106551" />
+<img width="220" alt="karsılama-ekranı" src="https://github.com/user-attachments/assets/0b435bff-2207-45d2-8b44-a0bae6106551" />
+<img width="220" alt="owner-dashboard" src="https://github.com/user-attachments/assets/9c6dbda5-03ba-4373-926b-4737003499bf" />
+
 
 
 | QR Attendance | Leave Request | Announcements |
@@ -49,7 +51,7 @@ monorepo/
 
 | Company Overview | Employee Management | Attendance Report |
 |---|---|---|
-<img width="1918" height="873" alt="image" src="https://github.com/user-attachments/assets/2fcd4fb9-a44b-4c4d-abc4-7a9696ea9dbf" />
+<img width="300" alt="image" src="https://github.com/user-attachments/assets/2fcd4fb9-a44b-4c4d-abc4-7a9696ea9dbf" />
 
 
 ---

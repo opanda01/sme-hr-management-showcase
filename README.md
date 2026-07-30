@@ -1,14 +1,27 @@
-# SME HR Management System
+<div align="center">
 
-A graduation project — a full-stack Human Resources Management platform designed for Small & Medium Enterprises (SMEs). Built as a monorepo, three client applications share a single REST API backend.
+<h1>SME HR Management System</h1>
+<p><em>A full-stack Human Resources platform built for Small & Medium Enterprises</em></p>
 
----
+[![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![React Native](https://img.shields.io/badge/React_Native-20232A?style=flat-square&logo=react&logoColor=61DAFB)](https://reactnative.dev)
+[![React](https://img.shields.io/badge/React_19-20232A?style=flat-square&logo=react&logoColor=61DAFB)](https://react.dev)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL_15-316192?style=flat-square&logo=postgresql&logoColor=white)](https://postgresql.org)
+[![Redis](https://img.shields.io/badge/Redis_7-DC382D?style=flat-square&logo=redis&logoColor=white)](https://redis.io)
+[![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)](https://docker.com)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://typescriptlang.org)
+
+</div>
+
+# Kobik HR — SME HR Management System
+
+**Portfolio & live showcase:** [kobik.dev](https://kobik.dev)
+
+A full-stack Human Resources platform for **Small & Medium Enterprises (SMEs)**. One monorepo, three client applications, and a shared REST API—plus an OR-Tools scheduling worker for automated shift planning.
 
 ## Overview
 
-Managing people in a small business should not require expensive enterprise software. This platform provides owners, managers, and employees with a unified toolset — accessible on both mobile and web — covering the full HR lifecycle from onboarding to attendance reporting.
-
----
+Managing people in a growing business should not require expensive enterprise software. Kobik HR gives owners, managers, and employees a unified toolkit on **mobile and web**, covering onboarding, scheduling, attendance, leave, feedback, and internal communications.
 
 ## Architecture
 
@@ -16,125 +29,113 @@ Managing people in a small business should not require expensive enterprise soft
 monorepo/
 ├── apps/
 │   ├── api/          # FastAPI backend (Python)
-│   ├── mobile/       # React Native / Expo application
-│   └── dashboard/    # React web admin panel
-└── packages/
-    ├── types/        # Shared TypeScript type definitions
-    └── ui-kit/       # Shared component library
+│   ├── mobile/       # React Native / Expo app (Kobik HR)
+│   ├── dashboard/    # React web admin panel
+│   └── scheduler/    # OR-Tools shift planning engine
+└── docs/             # Architecture & setup (private dev repo)
 ```
 
 | Layer | Technology |
-|---|---|
-| Backend API | FastAPI · SQLAlchemy 2 · PostgreSQL · Redis |
-| Mobile Application | React Native 0.81 · Expo 54 · Zustand |
-| Web Dashboard | React 19 · Vite 7 · Tailwind CSS 4 · Zustand |
-| Infrastructure | Docker Compose · MinIO · GitHub Actions CI/CD |
-
----
+|-------|------------|
+| **Backend API** | FastAPI · SQLAlchemy 2 · PostgreSQL · Redis |
+| **Mobile** | React Native · Expo · Zustand · NativeWind |
+| **Web dashboard** | React 19 · Vite 7 · Tailwind CSS 4 · Zustand |
+| **Infrastructure** | Docker Compose · MinIO · GitHub Actions CI/CD · EAS |
 
 ## Screenshots
 
-### Mobile Application
+UI previews (mobile & web) are on the live showcase: **[kobik.dev](https://kobik.dev)**
 
-| Login | Employee Dashboard | Shift Schedule |
-|---|---|---|
-| *(coming soon)* | *(coming soon)* | *(coming soon)* |
+- **Mobile** — Login · Employee dashboard · Shift schedule · QR attendance · Leave requests · Announcements
+- **Web** — Company overview · Employee management · Attendance & reports · Scheduler
 
-| QR Attendance | Leave Request | Announcements |
-|---|---|---|
-| *(coming soon)* | *(coming soon)* | *(coming soon)* |
+## Core features
 
-### Web Dashboard
+### Authentication & access control
 
-| Company Overview | Employee Management | Attendance Report |
-|---|---|---|
-| *(coming soon)* | *(coming soon)* | *(coming soon)* |
+- Role-based access: Owner / Manager / Employee
+- Company registration with superadmin approval
+- Dynamic invite codes for employee onboarding
+- JWT auth with email and SMS OTP verification
+- Password reset: email → OTP → new password
 
----
+### Shift management
 
-## Core Features
-
-### Authentication & Access Control
-- Role-based access control: **Owner / Manager / Employee**
-- Company registration with superadmin approval workflow
-- Dynamic invite-code system for employee onboarding
-- JWT authentication with email and SMS OTP verification
-- 3-step password reset flow (email → OTP → new password)
-
-### Shift Management
 - Create, bulk-create, update, and cancel shifts
-- Employee self-service view for personal schedule
-- Shift swap workflow: employee initiates → target responds → manager approves
+- Employee self-service schedule
+- Shift swap: employee → peer response → manager approval
 
-### Leave Management
-- Leave types: Annual / Sick / Personal / Unpaid
-- Request → Approve / Reject workflow with manager notifications
-- Leave balance cards per employee
+### Leave management
+
+- Types: Annual / Sick / Personal / Unpaid
+- Request → approve/reject with manager notifications
+- Per-employee leave balance
 - Turkish public holiday support
 
-### QR Attendance
-- Manager starts a QR session — rotating token is stored in Redis
-- Employee scans QR via device camera — check-in recorded with 15-second cooldown
-- Real-time attendance summary widget on the manager dashboard
+### QR attendance
 
-### Announcements
-- Pinnable announcements visible to all roles
-- Unread badge counter per user
-- Per-announcement read-receipt tracking
+- Manager starts a QR session (rotating token in Redis)
+- Employee scan via camera; check-in with cooldown
+- Live attendance summary for managers
 
-### Feedback
-- Anonymous or identified feedback submission by employees
-- Categories: Suggestion / Complaint / General
-- Manager reply and archive workflow
+### Announcements & feedback
 
----
+- Pinnable announcements, unread badges, read receipts
+- Anonymous or identified feedback; manager reply and archive
 
-## Mobile Application
+### Extended capabilities
 
-- Feature-Slice Design (FSD) architecture
-- 5+5 tab layout: Owner/Manager tabs and Employee tabs, driven by RBAC
-- Manager Hub: dual-panel switcher between Management view and Personal view
-- Dynamic theme system — 4 built-in themes, persisted via Zustand
-- Form validation with `react-hook-form` and `zod`
-- ASCII email validation enforced on both client and server
-- Managed SplashScreen lifecycle
+- **Departments** and org structure
+- **Auto-scheduling** via OR-Tools (dedicated scheduler service)
+- **Notifications** (email/SMS/push) and realtime updates
+- **Documents & exports** (MinIO storage, CSV/PDF reporting)
+- **Legal & consent** flows for registration compliance
 
-## Web Dashboard
+### Mobile application
 
-- React 19 with Vite 7 and Tailwind CSS 4
+- Feature-Slice Design (FSD)
+- Dual tab layouts for Owner/Manager vs Employee (RBAC)
+- Manager hub: management vs personal view
+- Theming (multiple themes, persisted state)
+- Forms: react-hook-form + zod; strict email validation client & server
+
+### Web dashboard
+
 - Company statistics and date-range attendance reports
-- Full employee management: create, update, bulk import, role assignment
-- Invitation management panel
-
----
+- Employee CRUD, bulk import, role assignment
+- Invitation management and workforce tooling
 
 ## API
 
-The backend exposes **76 REST endpoints** across the following domains:
+The backend exposes **120+ REST endpoints** across domains including:
 
-`auth` · `users` · `admin` · `companies` · `shifts` · `leaves` · `shift-swaps` · `qr` · `attendance` · `feedback` · `announcements`
+`auth` · `users` · `admin` · `companies` · `departments` · `employees` · `shifts` · `leaves` · `shift-swaps` · `qr` · `attendance` · `feedback` · `announcements` · `scheduler` · `dashboard` · `reports` · `notifications` · `files` · `legal`
 
-Interactive API documentation is available via Swagger UI at `/docs` when running locally.
+Interactive OpenAPI docs: `/docs` when the API runs locally (private development repository).
 
----
+## Quality & delivery
 
-## Quality & CI/CD
-
-- GitHub Actions pipeline: lint and TypeScript type-check on every push
-- Jest and React Testing Library for mobile component tests
-- Docker Compose for a reproducible local environment (PostgreSQL, Redis, MinIO)
-- `.env.example` provided — no secrets committed to the repository
-
----
+- GitHub Actions: lint, type-check, API unit/integration tests, Docker image builds
+- Staging and production deploy workflows; mobile builds via EAS
+- Jest + React Testing Library on mobile
+- Docker Compose for local PostgreSQL, Redis, and MinIO
+- `.env.example` pattern—no secrets in version control
 
 ## Status
 
-This repository is a **public showcase**. The full source code is maintained in a private repository.
+This repository is a **public showcase** for portfolio and product marketing. **Production source and ongoing development** are maintained in a **private repository**.
 
-**Development timeline:** January 2026 — May 2026 (6 phases)
+For demos, architecture notes, and screenshots, visit **[kobik.dev](https://kobik.dev)**.
+
+## License & contact
+
+This showcase repository is provided for portfolio and demonstration purposes only. See [LICENSE](LICENSE) in this repository. Product inquiries: [kobik.dev](https://kobik.dev).
 
 ---
 
-## Author
+Built by [kobik.dev](https://kobik.dev)
 
-Graduation project — Computer Programming, 2026.
+
+<div align="center">
+<sub>FastAPI · React Native · React · PostgreSQL · Redis · MinIO · OR-Tools · Docker · Firebase</sub>
+</div>

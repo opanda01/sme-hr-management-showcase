@@ -129,7 +129,7 @@ For demos, architecture notes, and screenshots, visit **[kobik.dev](https://kobi
 
 ## License & contact
 
-This showcase repository is provided for portfolio and demonstration purposes only. See [LICENSE](LICENSE) in this repository. Product inquiries: [kobik.dev](https://kobik.dev).
+This showcase repository is provided for portfolio and demonstration purposes only. See [LICENSE](LICENSE.md) in this repository. Product inquiries: [kobik.dev](https://kobik.dev).
 
 ---
 

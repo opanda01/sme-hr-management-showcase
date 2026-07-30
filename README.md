@@ -125,6 +125,8 @@ Interactive OpenAPI docs: `/docs` when the API runs locally (private development
 
 This repository is a **public showcase** for portfolio and product marketing. **Production source and ongoing development** are maintained in a **private repository**.
 
+**Contributions:** pull requests are not accepted. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
 For demos, architecture notes, and screenshots, visit **[kobik.dev](https://kobik.dev)**.
 
 ## License & contact

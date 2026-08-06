@@ -1,0 +1,25 @@
+name: Portfolio feedback
+description: Questions, suggestions, or feedback about this showcase repository (not bug reports for production Kobik HR).
+title: "[Feedback]: "
+labels: ["feedback"]
+body:
+  - type: markdown
+    value: |
+      Thanks for taking the time to look at this portfolio showcase. **Pull requests are not accepted** here; use this form for feedback only.
+      For product or demo requests, visit [kobik.dev](https://kobik.dev).
+  - type: textarea
+    id: message
+    attributes:
+      label: Your message
+      description: What stood out, what was unclear, or what you'd like to see added to the showcase?
+      placeholder: e.g. README clarity, screenshot ideas, hiring/portfolio context…
+    validations:
+      required: true
+  - type: checkboxes
+    id: context
+    attributes:
+      label: Context (optional)
+      options:
+        - label: I am reviewing this for a job / hiring process
+        - label: I am a potential customer evaluating Kobik HR
+        - label: I am a developer learning from the architecture description
